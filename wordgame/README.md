@@ -1,27 +1,27 @@
 # 🧠 Word Play – A Farcaster-Integrated Word Guessing Web3 Game
 
-Welcome to **Word Play** — a fun, strategic, and competitive word-guessing game where your **STT** tokens fuel the thrill!  
+Welcome to **Word Play** — a fun, strategic, and competitive word-guessing game where your **CELO** tokens fuel the thrill!  
 Guess the word, beat the clock, and multiply your stake the faster you win. 🚀
 
 ---
 
 ## 🎯 Overview
 
-**Word Play** is a brain-boosting game where players stake **STT tokens** to participate.  
+**Word Play** is a brain-boosting game where players stake **CELO tokens** to participate.  
 You’ll be given a **five-letter word** to guess, and your rewards depend on how **fast** and **accurately** you guess.
 
 **Key Features:**
 - Fully playable and working **Web3 game**.
 - Built with **Farcaster integration** for social sharing.
-- **On-chain** reward system powered by STT.
-- Deployed on **Somnia Testnet** with minimal off-chain dependency.
+- **On-chain** reward system powered by CELO.
+- Deployed on **Celo Mainnet** with minimal off-chain dependency.
 
 ---
 
 ## 🚀 Deployment
 
 **Contract Deployment:**  
-[View on Somnia Explorer](https://shannon-explorer.somnia.network/address/0xBFff78BB02925E4D8671D0d90B2a6330fcAedd87)
+[View on Celo Explorer](https://celoscan.io/address/0x1daBC80337bF2d85d496c4eD9cE63a1b16Fbd539)
 
 ---
 
@@ -30,8 +30,8 @@ You’ll be given a **five-letter word** to guess, and your rewards depend on ho
 1. **Connect Your Wallet**  
    - Connect your Web3 wallet to start playing.
 
-2. **Deposit STT**  
-   - Deposit STT tokens and click **"Start Play"**.
+2. **Deposit CELO**  
+   - Deposit CELO tokens and click **"Start Play"**.
 
 3. **Guess the Word**  
    - You’ll be given a **five-letter word** to guess.
@@ -52,7 +52,7 @@ You’ll be given a **five-letter word** to guess, and your rewards depend on ho
 ## 📜 Rules
 
 - You must **connect your wallet** before playing.
-- STT stake is required to start a round.
+- CELO stake is required to start a round.
 - Rewards are calculated based on:
   - Time taken to guess.
   - Number of correct guesses before losing moves.
@@ -63,10 +63,10 @@ You’ll be given a **five-letter word** to guess, and your rewards depend on ho
 ## 🛠 Tech Stack
 
 - **Frontend:** React / Next.js
-- **Blockchain:** Somnia Testnet
+- **Blockchain:** Celo Mainnet
 - **Wallet Integration:** Wagmi, Ethers.js
 - **Social Integration:** Farcaster
-- **Token:** STT
+- **Token:** CELO
 
 ---
 
@@ -75,7 +75,7 @@ You’ll be given a **five-letter word** to guess, and your rewards depend on ho
 This repository contains:
 1. ✅ **Playable and working** version of the game.
 2. 📖 **README** with complete How-To-Play instructions.
-3. 🔗 **Deployed Web3 game** on Somnia Testnet with minimal off-chain dependency.
+3. 🔗 **Deployed Web3 game** on Celo Mainnet with minimal off-chain dependency.
 
 ---
 
