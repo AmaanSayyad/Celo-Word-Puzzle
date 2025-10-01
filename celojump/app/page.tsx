@@ -6,14 +6,14 @@ import App from '../components/pages/app'
 
 const frame = {
   version: 'next',
-  imageUrl: `https://t3.ftcdn.net/jpg/02/95/89/76/360_F_295897680_UR9pY3i9H2XccDSZuscuOYy2ZWjoim82.jpg`,
+  imageUrl: `https://pbs.twimg.com/profile_images/1911481458729857024/mFA1NRn2_400x400.jpg`,
   button: {
     title: 'Play Celo Jump',
     action: {
       type: 'launch_frame',
       name: 'Celo jump',
       url: APP_URL,
-      splashImageUrl: `https://t3.ftcdn.net/jpg/02/95/89/76/360_F_295897680_UR9pY3i9H2XccDSZuscuOYy2ZWjoim82.jpg`,
+      splashImageUrl: `https://pbs.twimg.com/profile_images/1911481458729857024/mFA1NRn2_400x400.jpg`,
       splashBackgroundColor: '#ff69b4',
     },
   },
