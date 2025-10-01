@@ -3,16 +3,17 @@ import './globals.css'
 import { Providers } from '@/components/providers'
 
 export const metadata: Metadata = {
-  title: 'Space Jump - Doodle Jump Style Game',
+  title: 'Celo Jump - Doodle Jump Style Game',
   description: 'A mobile-native HTML5 Doodle Jump-style space jumping game featuring an astronaut character',
   manifest: '/manifest.json',
-  themeColor: '#1a1a2e',
-  viewport: {
-    width: 'device-width',
-    initialScale: 1,
-    userScalable: false,
-  },
 }
+
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  userScalable: false,
+  themeColor: '#1a1a2e',
+};
 
 export default function RootLayout({
   children,
