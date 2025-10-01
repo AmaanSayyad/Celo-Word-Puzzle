@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react'
 import { useTopScores, useMyScore, useMyRank } from '../smartcontracthooks'
 import { useAccount, useChainId } from 'wagmi'
 import {
-  celo, 
   celoAlfajores, 
 } from 'viem/chains'
 import styles from './Leaderboard.module.css'
