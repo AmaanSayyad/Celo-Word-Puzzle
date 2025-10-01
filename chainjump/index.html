@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Space Jump - Doodle Jump Style Game</title>
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#1a1a2e">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        body {
+            background: #000;
+            overflow: hidden;
+            font-family: 'Arial', sans-serif;
+            touch-action: manipulation;
+        }
+
+        #gameContainer {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #gameCanvas {
+            background: #1a1a2e;
+            border: none;
+            display: block;
+            max-width: 100vw;
+            max-height: 100vh;
+            image-rendering: pixelated;
+            image-rendering: -moz-crisp-edges;
+            image-rendering: crisp-edges;
+        }
+
+        #ui {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        #score {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 36px;
+            font-weight: bold;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.5), 2px 2px 4px rgba(0,0,0,0.8);
+            pointer-events: none;
+            font-family: 'Courier New', monospace;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 10px 20px;
+            border-radius: 15px;
+            border: 2px solid rgba(0, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        #controls {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 30px;
+            pointer-events: auto;
+        }
+
+        .control-btn {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(145deg, rgba(100, 100, 255, 0.9), rgba(80, 80, 200, 0.9));
+            border: 3px solid rgba(0, 255, 255, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: white;
+            cursor: pointer;
+            user-select: none;
+            transition: all 0.2s ease;
+            box-shadow: 0 6px 20px rgba(0, 100, 255, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .control-btn:active {
+            transform: scale(0.95) translateY(2px);
+            background: linear-gradient(145deg, rgba(120, 120, 255, 1), rgba(100, 100, 220, 1));
+            box-shadow: 0 3px 10px rgba(0, 100, 255, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+        }
+
+        .control-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 100, 255, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+        }
+
+        .control-btn::before {
+            content: '';
+            width: 0;
+            height: 0;
+        }
+
+        #leftBtn::before {
+            border-top: 12px solid transparent;
+            border-bottom: 12px solid transparent;
+            border-right: 20px solid white;
+        }
+
+        #rightBtn::before {
+            border-top: 12px solid transparent;
+            border-bottom: 12px solid transparent;
+            border-left: 20px solid white;
+        }
+
+        #gameOver {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: none;
+            pointer-events: auto;
+            backdrop-filter: blur(10px);
+        }
+
+        #gameOverContent {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+            max-width: 350px;
+            background: rgba(15, 15, 35, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 30px 25px;
+            animation: fadeSlideUp 0.4s ease-out;
+        }
+
+        @keyframes fadeSlideUp {
+            0% {
+                transform: translate(-50%, -40%) scale(0.9);
+                opacity: 0;
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 1;
+            }
+        }
+
+        #gameOverTitle {
+            font-size: 28px;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        #scoreDisplay {
+            background: rgba(0, 0, 0, 0.4);
+            padding: 15px 25px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        #scoreDisplay p {
+            font-size: 18px;
+            color: #cccccc;
+            margin: 0;
+        }
+
+        #finalScore {
+            font-size: 32px;
+            color: #00ffff;
+            font-weight: bold;
+            display: block;
+            margin-top: 8px;
+        }
+
+        #gameOverButtons {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            width: 100%;
+        }
+
+        .minimal-btn {
+            width: 100%;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            color: white;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .minimal-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-1px);
+        }
+
+        .minimal-btn:active {
+            transform: translateY(0);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .minimal-btn.primary {
+            background: rgba(0, 255, 255, 0.2);
+            border-color: rgba(0, 255, 255, 0.4);
+            color: #00ffff;
+        }
+
+        .minimal-btn.primary:hover {
+            background: rgba(0, 255, 255, 0.3);
+        }
+
+        #startScreen {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('assets/Wallpaper.png') center/contain no-repeat;
+            background-size: contain;
+            background-position: center center;
+            background-color: #0a0a1a;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            color: white;
+            pointer-events: auto;
+            padding: 20px;
+        }
+
+        #startScreen::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        #startScreen > * {
+            position: relative;
+            z-index: 2;
+        }
+
+        #startScreen h1 {
+            font-size: 48px;
+            margin-bottom: 15px;
+            margin-top: 40px;
+            text-shadow: 0 0 20px rgba(0, 255, 255, 0.8), 3px 3px 6px rgba(0,0,0,0.9);
+            color: #00ffff;
+            animation: glow 2s ease-in-out infinite alternate;
+            text-align: center;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 20px rgba(0, 255, 255, 0.8), 3px 3px 6px rgba(0,0,0,0.9);
+            }
+            to {
+                text-shadow: 0 0 30px rgba(0, 255, 255, 1), 3px 3px 6px rgba(0,0,0,0.9);
+            }
+        }
+
+        #startScreen p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            text-align: center;
+            max-width: 320px;
+            line-height: 1.4;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.9);
+            color: #ffffff;
+        }
+
+        #startButtons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            align-items: center;
+            width: 100%;
+            max-width: 280px;
+            margin-top: auto;
+            margin-bottom: 40px;
+            position: relative;
+            z-index: 3;
+        }
+
+        .start-btn {
+            width: 250px;
+            height: 55px;
+            background: linear-gradient(145deg, rgba(0, 255, 255, 0.1), rgba(0, 100, 200, 0.2));
+            border: 2px solid rgba(0, 255, 255, 0.3);
+            border-radius: 15px;
+            color: #ffffff;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+            box-shadow: 
+                0 0 20px rgba(0, 255, 255, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .start-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .start-btn:hover::before {
+            left: 100%;
+        }
+
+        .start-btn:hover {
+            background: linear-gradient(145deg, rgba(0, 255, 255, 0.2), rgba(0, 150, 255, 0.3));
+            border-color: rgba(0, 255, 255, 0.6);
+            transform: translateY(-3px);
+            box-shadow: 
+                0 0 30px rgba(0, 255, 255, 0.4),
+                0 10px 20px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            text-shadow: 0 0 15px rgba(0, 255, 255, 0.8);
+        }
+
+        .start-btn:active {
+            transform: translateY(-1px);
+            box-shadow: 
+                0 0 25px rgba(0, 255, 255, 0.3),
+                0 5px 10px rgba(0, 0, 0, 0.4);
+        }
+
+        #startPlayBtn {
+            background: linear-gradient(145deg, rgba(0, 255, 100, 0.15), rgba(0, 200, 100, 0.25));
+            border-color: rgba(0, 255, 100, 0.4);
+        }
+
+        #startPlayBtn:hover {
+            background: linear-gradient(145deg, rgba(0, 255, 100, 0.25), rgba(0, 255, 150, 0.35));
+            border-color: rgba(0, 255, 100, 0.7);
+            box-shadow: 
+                0 0 30px rgba(0, 255, 100, 0.4),
+                0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        #startLeaderboardBtn {
+            background: linear-gradient(145deg, rgba(255, 200, 0, 0.15), rgba(255, 150, 0, 0.25));
+            border-color: rgba(255, 200, 0, 0.4);
+        }
+
+        #startLeaderboardBtn:hover {
+            background: linear-gradient(145deg, rgba(255, 200, 0, 0.25), rgba(255, 180, 0, 0.35));
+            border-color: rgba(255, 200, 0, 0.7);
+            box-shadow: 
+                0 0 30px rgba(255, 200, 0, 0.4),
+                0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        #startExitBtn {
+            background: linear-gradient(145deg, rgba(255, 100, 100, 0.15), rgba(255, 50, 50, 0.25));
+            border-color: rgba(255, 100, 100, 0.4);
+        }
+
+        #startExitBtn:hover {
+            background: linear-gradient(145deg, rgba(255, 100, 100, 0.25), rgba(255, 80, 80, 0.35));
+            border-color: rgba(255, 100, 100, 0.7);
+            box-shadow: 
+                0 0 30px rgba(255, 100, 100, 0.4),
+                0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        @media (max-height: 600px) {
+            #score {
+                font-size: 24px;
+                top: 10px;
+            }
+            
+            #controls {
+                bottom: 10px;
+                padding: 0 20px;
+            }
+            
+            .control-btn {
+                width: 60px;
+                height: 60px;
+                font-size: 18px;
+            }
+            
+            #gameOverContent {
+                min-height: 400px;
+                padding: 30px 20px;
+            }
+            
+            #gameOverTitle {
+                font-size: 32px;
+                margin-bottom: 15px;
+            }
+            
+            .game-btn {
+                width: 160px;
+                height: 50px;
+            }
+            
+            #scoreDisplay {
+                padding: 15px 20px;
+            }
+            
+            #scoreDisplay p {
+                font-size: 24px;
+            }
+            
+            #finalScore {
+                font-size: 30px;
+            }
+            
+            #startScreen h1 {
+                font-size: 36px;
+                margin-bottom: 15px;
+            }
+            
+            #startScreen p {
+                font-size: 16px;
+                margin-bottom: 30px;
+                max-width: 280px;
+            }
+            
+            .start-btn {
+                width: 160px;
+                height: 50px;
+            }
+            
+            #startScreen {
+                background-size: cover;
+                background-position: center top;
+            }
+            
+            #startScreen h1 {
+                margin-top: -30px;
+            }
+        }
+        
+        @media (max-width: 400px) {
+            #startScreen {
+                background-size: cover;
+                background-position: center center;
+            }
+            
+            #startScreen h1 {
+                font-size: 40px;
+                margin-top: -40px;
+                margin-bottom: 10px;
+            }
+            
+            #startScreen p {
+                font-size: 16px;
+                margin-bottom: 25px;
+                max-width: 280px;
+            }
+            
+            .start-btn {
+                width: 150px;
+                height: 45px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="gameContainer">
+        <canvas id="gameCanvas"></canvas>
+        
+        <div id="ui">
+            <div id="score">0</div>
+            
+            <div id="controls">
+                <div class="control-btn" id="leftBtn"></div>
+                <div class="control-btn" id="rightBtn"></div>
+            </div>
+            
+            <div id="gameOver">
+                <div id="gameOverContent">
+                    <div id="gameOverTitle">Game Over</div>
+                    
+                    <div id="scoreDisplay">
+                        <p>Your Score</p>
+                        <span id="finalScore">0</span>
+                    </div>
+                    
+                    <div id="gameOverButtons">
+                        <button class="minimal-btn primary" id="playBtn">Play Again</button>
+                        <button class="minimal-btn" id="topScorerBtn">High Score</button>
+                        <button class="minimal-btn" id="exitBtn">Main Menu</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="startScreen">
+                <h1></h1>
+                <p></p>
+                <div id="startButtons">
+                    <button class="start-btn" id="startPlayBtn">START MISSION</button>
+                    <button class="start-btn" id="startLeaderboardBtn">LEADERBOARD</button>
+                    <button class="start-btn" id="startExitBtn">EXIT</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>
