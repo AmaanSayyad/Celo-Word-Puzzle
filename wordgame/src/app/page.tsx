@@ -33,7 +33,7 @@ export default function Home() {
             >
 
               <div className="key-chart flex gap-1">
-                {["S", "O", "M", "N", "I","A"].map((letter, idx) => (
+                {["C", "E", "L", "0"].map((letter, idx) => (
                   <motion.div
                     key={`celo-${idx}`}
                     className="text-xs text-purple-500 font-bold"

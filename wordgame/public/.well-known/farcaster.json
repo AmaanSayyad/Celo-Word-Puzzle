@@ -6,20 +6,20 @@
   },
   "frame": {
     "version": "1",
-    "name": "Celo Word Play",
-    "iconUrl": "https://png.pngtree.com/png-clipart/20230810/original/pngtree-word-game-rgb-color-icon-block-mind-web-vector-picture-image_10272348.png",
+    "name": "Celo Word Puzzle",
+    "iconUrl": "https://cdn-icons-gif.flaticon.com/15689/15689514.gif",
     "homeUrl": "https://wordgame-nine.vercel.app/",
-    "imageUrl": "https://png.pngtree.com/png-clipart/20230810/original/pngtree-word-game-rgb-color-icon-block-mind-web-vector-picture-image_10272348.png",
-    "buttonTitle": "WORD PLAY",
-    "splashImageUrl": "https://png.pngtree.com/png-clipart/20230810/original/pngtree-word-game-rgb-color-icon-block-mind-web-vector-picture-image_10272348.png",
-    "splashBackgroundColor": "#6c54f8",
+    "imageUrl": "https://cdn-icons-gif.flaticon.com/15689/15689514.gif",
+    "buttonTitle": "WORD Puzzle",
+    "splashImageUrl": "https://media.lordicon.com/icons/wired/lineal/186-puzzle.gif",
+    "splashBackgroundColor": "#FFFFFF",
     "description": "Guess Words Earn Celo",
     "tags": [
       "word",
-      "wordplay",
+      "wordPuzzle",
       "word-guess",
       "celo",
-      "celo-word-play"
+      "celo-word-Puzzle"
     ],
     "primaryCategory": "productivity"
   }

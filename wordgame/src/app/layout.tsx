@@ -35,15 +35,15 @@ export default function RootLayout({
           name="fc:frame"
           content='{
       "version": "1",
-      "imageUrl": "https://s.tmimgcdn.com/scr/1200x750/218100/world-play-color-logo-style_218187-original.jpg",
+      "imageUrl": "https://cdn-icons-gif.flaticon.com/15689/15689514.gif",
        "button": {
-          "title": "Word Play",
+          "title": "Celo Word Puzzle",
           "action": {
             "type": "launch_frame",
-            "name": "Celo Word Play",
+            "name": "Celo Word Puzzle",
             "url": "https://wordgame-nine.vercel.app/",
-            "splashImageUrl": "https://s.tmimgcdn.com/scr/1200x750/218100/world-play-color-logo-style_218187-original.jpg",
-            "splashBackgroundColor": "black"
+            "splashImageUrl": "https://cdn-icons-gif.flaticon.com/15689/15689514.gif",
+            "splashBackgroundColor": "white"
           }
         }
      }'
