@@ -252,7 +252,12 @@ export default function SpaceJumpGame() {
         </div>
         
         <div id="startScreen" className={styles.startScreen}>
-          <h1>🚀 Space Jump</h1>
+          <img 
+            src="https://docs.celo.org/img/logo-dark.png" 
+            alt="Celo Logo" 
+            style={{ width: 204, height: 64, marginBottom: 16 }}
+          />
+          <h1 style={{textDecoration:"uppercase"}}>Jump</h1>
           <p>Jump on platforms and reach for the stars! Use the arrow buttons to move left and right.</p>
           <div className={styles.startButtons}>
             <button id="startPlayBtn" className={styles.startBtn}>Start Game</button>

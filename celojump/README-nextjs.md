@@ -1,4 +1,4 @@
-# 🚀 Space Jump - Next.js Mobile Game
+# 🚀 Celo Jump - Next.js Mobile Game
 
 A complete mobile-native Next.js Doodle Jump-style space jumping game featuring an astronaut character.
 

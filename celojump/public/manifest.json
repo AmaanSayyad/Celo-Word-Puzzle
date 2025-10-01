@@ -1,7 +1,7 @@
 {
-  "name": "Space Jump",
-  "short_name": "SpaceJump",
-  "description": "A Doodle Jump-style space jumping game",
+  "name": "Celo Jump",
+  "short_name": "CeloJump",
+  "description": "A Doodle Jump-style Celo jumping game",
   "start_url": "/",
   "display": "fullscreen",
   "orientation": "portrait",

@@ -30,7 +30,7 @@ export async function GET() {
       ogDescription: "Celo Jump",
       ogImageUrl: `https://t3.ftcdn.net/jpg/02/95/89/76/360_F_295897680_UR9pY3i9H2XccDSZuscuOYy2ZWjoim82.jpg`,
       heroImageUrl: `https://t3.ftcdn.net/jpg/02/95/89/76/360_F_295897680_UR9pY3i9H2XccDSZuscuOYy2ZWjoim82.jpg`,
-      requiredChains: ["eip155:44787"],
+      requiredChains: ["eip155:42220"],
     },
 
   };

@@ -5,14 +5,12 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { http, WagmiProvider, createConfig } from 'wagmi'
 import {
   celo,
-  celoAlfajores, 
 } from 'viem/chains'
 
 export const config = createConfig({
-  chains: [celo, celoAlfajores],
+  chains: [celo],
   transports: {
-    [celo.id]: http('https://forno.celo.org'),
-    [celoAlfajores.id]: http('https://alfajores-forno.celo-testnet.org')
+    [celo.id]: http('https://forno.celo.org')
   },
   connectors: [miniAppConnector()],
 })
