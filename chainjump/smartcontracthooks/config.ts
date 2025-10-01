@@ -1,5 +1,5 @@
 // Smart Contract Configuration for ChainJump Gaming
-// Contract deployed on Base Sepolia testnet
+// Contract deployed on celoAlfajores  testnet
 
 import { Address } from 'viem';
 import contractData from '../lib/contract';
@@ -65,8 +65,8 @@ export const DEFAULT_LEADERBOARD_OPTIONS = {
  * Contract addresses for different networks (if needed)
  */
 export const CONTRACT_ADDRESSES = {
-  // Contract is deployed on Base Sepolia testnet
-  BASE_SEPOLIA: contractData.contractAddress as Address,
+  // Contract is deployed on celoAlfajores testnet
+  CELO_ALFAJORES: contractData.contractAddress as Address,
   TESTNET: contractData.contractAddress as Address,
   LOCAL: contractData.contractAddress as Address,
 } as const;

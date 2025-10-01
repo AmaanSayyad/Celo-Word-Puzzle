@@ -3,7 +3,10 @@
 import { useState, useEffect } from 'react'
 import { useTopScores, useMyScore, useMyRank } from '../smartcontracthooks'
 import { useAccount, useChainId } from 'wagmi'
-import { baseSepolia } from 'wagmi/chains'
+import {
+  celo, 
+  celoAlfajores, 
+} from 'viem/chains'
 import styles from './Leaderboard.module.css'
 
 interface LeaderboardProps {
@@ -27,8 +30,8 @@ export default function Leaderboard({ isVisible, onClose, isUpdating = false }: 
       console.log('Leaderboard Debug:', {
         address,
         chainId,
-        expectedChainId: baseSepolia.id,
-        isCorrectNetwork: chainId === baseSepolia.id,
+        expectedChainId: celoAlfajores.id,
+        isCorrectNetwork: chainId === celoAlfajores.id,
         topScores,
         scoresLoading,
         scoresError: scoresError?.message,
@@ -57,10 +60,10 @@ export default function Leaderboard({ isVisible, onClose, isUpdating = false }: 
           <button className={styles.closeBtn} onClick={onClose}>×</button>
         </div>
         
-        {chainId !== baseSepolia.id && (
+        {chainId !== celoAlfajores.id && (
           <div className={styles.networkWarning}>
             <p>⚠️ Wrong Network</p>
-            <p>Please switch to Base Sepolia to view scores</p>
+            <p>Please switch to Celo Alfajores to view scores</p>
           </div>
         )}
         

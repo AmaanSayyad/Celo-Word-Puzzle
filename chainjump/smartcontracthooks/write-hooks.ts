@@ -2,7 +2,7 @@
 
 import { useState, useCallback } from 'react';
 import { useWriteContract, useWaitForTransactionReceipt, useAccount } from 'wagmi';
-import { parseEventLogs } from 'viem';
+
 import { 
   UseContractWriteResult,
   NewUserAddedEvent,
