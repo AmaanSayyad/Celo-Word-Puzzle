@@ -8,10 +8,10 @@ const frame = {
   version: 'next',
   imageUrl: `${APP_URL}/images/feed.png`,
   button: {
-    title: 'Play Chain jump',
+    title: 'Play Celo Jump',
     action: {
       type: 'launch_frame',
-      name: 'Chain jump',
+      name: 'Celo jump',
       url: APP_URL,
       splashImageUrl: `${APP_URL}/images/splash.png`,
       splashBackgroundColor: '#ff69b4',
@@ -21,9 +21,9 @@ const frame = {
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: 'Chain jump',
+    title: 'Celo jump',
     openGraph: {
-      title: 'Chain jump',
+      title: 'Celo jump',
       description: '',
     },
     other: {

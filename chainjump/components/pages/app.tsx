@@ -39,7 +39,7 @@ export default function Home() {
             {/* Main Message */}
             <div className="space-y-4">
               <h1 className="text-2xl font-bold text-white-100">
-                Chain jump Mini App
+                Celo jump Mini App
               </h1>
               
             </div>

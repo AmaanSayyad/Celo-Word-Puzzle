@@ -16,7 +16,6 @@ import {
   DEFAULT_HOOK_OPTIONS,
   DEFAULT_LEADERBOARD_OPTIONS,
   VALIDATION,
-  ERROR_MESSAGES 
 } from './config';
 
 /**
