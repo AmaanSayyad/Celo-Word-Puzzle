@@ -1,9 +1,6 @@
 import { APP_URL } from "../lib/constants";
 import type { Metadata } from 'next'
-import { useEffect } from 'react'
 import App from '../components/pages/app'
-
-
 const frame = {
   version: 'next',
   imageUrl: `https://pbs.twimg.com/profile_images/1911481458729857024/mFA1NRn2_400x400.jpg`,

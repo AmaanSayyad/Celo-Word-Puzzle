@@ -1,0 +1,36 @@
+{
+    "accountAssociation": {
+        "header": "",
+        "payload": "",
+        "signature": ""
+    },
+    "frame": {
+        "version": "1",
+        "name": "Celo Jump",
+        "iconUrl": "https://pbs.twimg.com/profile_images/1911481458729857024/mFA1NRn2_400x400.jpg",
+        "homeUrl": "https://jump-jump-jump-62ct.vercel.app/",
+        "imageUrl": "https://pbs.twimg.com/profile_images/1911481458729857024/mFA1NRn2_400x400.jpg",
+        "screenshotUrls": [],
+        "tags": [
+            "celo",
+            "farcaster",
+            "miniapp",
+            "games"
+        ],
+        "primaryCategory": "games",
+        "buttonTitle": "Play Now",
+        "splashImageUrl": "https://pbs.twimg.com/profile_images/1911481458729857024/mFA1NRn2_400x400.jpg",
+        "splashBackgroundColor": "#ffffff",
+        "webhookUrl": "https://jump-jump-jump-62ct.vercel.app/webhook",
+        "subtitle": "Celo Jump",
+        "description": "Celo Jump",
+        "tagline": "Celo Jump",
+        "ogTitle": "Celo Jump",
+        "ogDescription": "Celo Jump",
+        "ogImageUrl": "https://pbs.twimg.com/profile_images/1911481458729857024/mFA1NRn2_400x400.jpg",
+        "heroImageUrl": "https://pbs.twimg.com/profile_images/1911481458729857024/mFA1NRn2_400x400.jpg",
+        "requiredChains": [
+            "eip155:42220"
+        ]
+    }
+}
