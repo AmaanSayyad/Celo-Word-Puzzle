@@ -218,19 +218,7 @@ sequenceDiagram
     participant C as Smart Contract
     participant B as Blockchain
     
-    Note over U,B: Space Jump Score Submission
-    U->>G: Complete Game
-    G->>U: Show Score
-    U->>G: Click "Submit Score"
-    G->>W: Request Transaction
-    W->>U: Approve Transaction
-    U->>W: Confirm
-    W->>C: Submit Score Transaction
-    C->>B: Store Score On-Chain
-    B->>C: Transaction Confirmed
-    C->>G: Score Submitted
-    G->>U: Show Success + Leaderboard
-    
+ 
     Note over U,B: Word Play Token Staking
     U->>G: Connect Wallet
     G->>W: Request Connection
