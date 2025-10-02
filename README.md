@@ -1,22 +1,9 @@
-# 🚀 Jump-Jump-Jump - Web3 Gaming Collection
+# 🚀 Celo Word Puzzle- Web3 Game
 
-A collection of blockchain-integrated games built with Next.js, featuring exciting Web3 games: **Space Jump** (a Doodle Jump-style platformer) and **Word Play** (a word guessing game with CELO token rewards).
+A blockchain-integrated game built on Farcaster with Next.js (a word guessing game with CELO token rewards).
 
-## 🎮 Games Overview
+## 🎮 Game Overview
 
-### 1. 🌌 Space Jump Game (`/celojump`)
-A mobile-first Doodle Jump-style space jumping game featuring an astronaut character with blockchain score submission and leaderboard functionality.
-
-**Key Features:**
-- 🎯 **Mobile-First Design**: Optimized for mobile devices with touch controls
-- 🚀 **Sprite Animation**: 4-frame astronaut sprite animation
-- 🎨 **Multiple Platform Types**: Normal (purple), Moving (yellow), and Breakable (red) platforms
-- ♾️ **Endless Gameplay**: Infinite vertical scrolling with score tracking
-- 🏆 **Blockchain Integration**: Submit scores to Base Sepolia testnet
-- 📊 **Leaderboard**: View top scores and personal rankings
-- 📱 **PWA Ready**: Can be installed as a mobile app
-
-### 2. 🧠 Word Play Game (`/wordgame`)
 A strategic word-guessing game where players stake CELO tokens to participate and earn rewards based on speed and accuracy.
 
 **Key Features:**
@@ -28,14 +15,6 @@ A strategic word-guessing game where players stake CELO tokens to participate an
 - 🎨 **Modern UI**: Built with React, Next.js, and Tailwind CSS
 
 ## 🛠 Tech Stack
-
-### Space Jump Game
-- **Frontend**: Next.js 14, React 18, TypeScript
-- **Game Engine**: Phaser 3.90.0
-- **Blockchain**: Base Sepolia Testnet, Wagmi, Viem
-- **Styling**: CSS Modules, Framer Motion
-- **Database**: MongoDB for score persistence
-- **Wallet**: Farcaster Frame integration
 
 ### Word Play Game
 - **Frontend**: Next.js 15, React 19, TypeScript
@@ -56,8 +35,7 @@ A strategic word-guessing game where players stake CELO tokens to participate an
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/jump-jump-jump.git
-   cd jump-jump-jump
+   git clone https://github.com/yourusername/celo-word-puzzle.git
    ```
 
 2. **Install dependencies for Space Jump**
@@ -74,13 +52,6 @@ A strategic word-guessing game where players stake CELO tokens to participate an
 
 ### Running the Games
 
-#### Space Jump Game
-```bash
-cd celojump
-pnpm dev
-```
-Open [http://localhost:3000](http://localhost:3000) in your browser.
-
 #### Word Play Game
 ```bash
 cd wordgame
@@ -89,18 +60,6 @@ pnpm dev
 Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ## 🎯 How to Play
-
-### Space Jump Game
-1. **Start Playing**: Tap "Start Game" to begin
-2. **Movement**: Use left/right arrow buttons to move the astronaut
-3. **Jumping**: Land on platforms to jump higher
-4. **Platforms**: 
-   - 🟣 Purple: Normal platforms
-   - 🟡 Yellow: Moving platforms
-   - 🔴 Red: Breakable platforms
-5. **Scoring**: Points based on height climbed
-6. **Submit Score**: Connect wallet and submit your score to the blockchain
-7. **Leaderboard**: View top scores and your ranking
 
 ### Word Play Game
 1. **Connect Wallet**: Connect your Web3 wallet
@@ -127,7 +86,7 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 - **Features**: Token staking, reward distribution, game state management
 
 
-# Jump-Jump-Jump - Architecture Diagram
+# Celo Word Puzzle- Architecture Diagram
 
 ## System Architecture Overview
 
@@ -181,34 +140,6 @@ graph TB
     style L fill:#e8f5e8
     style M fill:#fff3e0
     style N fill:#e8f5e8
-```
-
-## Game Flow Diagrams
-
-### Space Jump Game Flow
-```mermaid
-flowchart TD
-    A[Start Game] --> B[Initialize Physics Engine]
-    B --> C[Load Assets & Sprites]
-    C --> D[Generate Platforms]
-    D --> E[Player Movement Controls]
-    E --> F{Land on Platform?}
-    F -->|Yes| G[Calculate Jump Physics]
-    F -->|No| H[Apply Gravity]
-    G --> I[Update Score]
-    H --> J{Player Fall?}
-    J -->|Yes| K[Game Over Screen]
-    J -->|No| E
-    I --> L{New High Score?}
-    L -->|Yes| M[Show Score Submission]
-    L -->|No| N[Continue Playing]
-    M --> O[Connect Wallet]
-    O --> P[Submit to Blockchain]
-    P --> Q[Update Leaderboard]
-    K --> R[View Leaderboard]
-    Q --> S[Share Achievement]
-    R --> S
-    N --> E
 ```
 
 ### Word Play Game Flow
@@ -356,7 +287,7 @@ This comprehensive architecture diagram shows:
 4. **Smart Contract Integration**: How the games interact with blockchain
 5. **Mobile Architecture**: Mobile-specific optimizations and features
 
-The diagrams illustrate how your Jump-Jump-Jump project integrates Web3 technologies with traditional game development to create engaging blockchain-based gaming experiences.
+The diagrams illustrate how your celo word puzzle project integrates Web3 technologies with traditional game development to create engaging blockchain-based gaming experiences.
 
 
 ## 📱 Mobile Support
